@@ -1,15 +1,23 @@
-export const FriendList = ({friends}) => {
+import style from './FriendList.module.scss'
+
+export const FriendList = ({ friends }) => {
   return (
-    <ul>
-      {friends.map((friend) => {
-        return (
-          <li className="item" key={friend.id}>
-            <span className="status">{friend.isOnline}</span>
-            <img className="avatar" src={friend.avatar} alt="User avatar" width="48" />
-            <p className="name">{friend.name}</p>
-          </li>
-        );
-      })}
+    <ul className={style.friendsList}>
+      {friends.map((friend) => (
+        <li className={style.item} key={friend.id}>
+          <span
+            className={style.status}
+            style={{ backgroundColor: friend.isOnline ? 'green' : 'red' }}
+          ></span>
+          <img
+            className={style.avatar}
+            src={friend.avatar}
+            alt="User avatar"
+            width="48"
+          />
+          <p className={style.name}>{friend.name}</p>
+        </li>
+      ))}
     </ul>
   );
 };
